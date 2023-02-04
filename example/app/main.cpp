@@ -5,7 +5,8 @@ int main()
 {
     Tray::Tray tray("Test App", "icon.ico");
 
-    tray.addEntry(Tray::Button("Test"))->setDisabled(true);
+    tray.addEntry(Tray::Button("Test"));
+    tray.addEntry(Tray::Button("Test Disabled"))->setDisabled(true);
     tray.addEntry(Tray::Separator());
     tray.addEntry(Tray::Label("Test Label"));
     tray.addEntry(Tray::Toggle("Test Toggle", false, [](bool state) { printf("State: %i\n", state); }));
