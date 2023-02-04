@@ -23,7 +23,7 @@ jobs:
                   submodules: recursive
 
             - name: Compile
-              run: "mkdir build && cd build && cmake ../example/simple && cmake --build . --config Release"
+              run: "mkdir build && cd build && cmake ../example/app && cmake --build . --config Release"
 
             - name: Release
               uses: softprops/action-gh-release@v1

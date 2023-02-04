@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.1)
 project(tray VERSION 0.2 DESCRIPTION "A cross-platform C++ system tray library")
 
 file(GLOB src
-    "example/simple/main.cpp"
+    "example/app/main.cpp"
     "tray/src/*.cpp"
     "tray/src/*/*.cpp"
     "tray/src/*/*/*.cpp"
