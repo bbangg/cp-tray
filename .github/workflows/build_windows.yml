@@ -1,0 +1,34 @@
+name: Build on Windows
+
+on:
+    push:
+        branches: [master]
+        paths-ignore:
+            - "**/README.md"
+            - "**/build_linux.yml"
+    pull_request:
+
+jobs:
+    build-windows:
+        runs-on: windows-latest
+        strategy:
+            fail-fast: false
+            matrix:
+                language: ["cpp"]
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+              with:
+                  submodules: recursive
+
+            - name: Compile
+              run: "mkdir build && cd build && cmake ../example/simple && cmake --build . --config Release"
+
+            - name: Release
+              uses: softprops/action-gh-release@v1
+              with:
+                  tag_name: windows
+                  files: ./build/Release/tray-example.exe
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
